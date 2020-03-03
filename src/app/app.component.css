@@ -1,0 +1,22 @@
+
+    #all{
+      display: block;direction: rtl;
+margin-left: auto;padding: 5px;
+margin-right: auto; border: 1px solid;
+width: 20%;
+    }
+    #header{
+      text-align: center;  text-decoration: underline;
+    }
+    #table{
+      width: 100%;
+    }
+    #context{
+      text-align: right;
+    }
+    #tr{
+      border: 1px black solid;
+    }
+    .error{
+      color: red;
+    }

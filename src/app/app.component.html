@@ -1,0 +1,23 @@
+
+<div id="all" >
+<div id="header" >ניהול משימות</div>
+<div id="context">
+<form name="form" (ngSubmit)="add(form)" #form="ngForm">
+<input type="text" name="text" id="text" [(ngModel)]="task" #text="ngModel" minlength="3"required (click)="clear()">
+    <input type="submit" value="הוספה">
+  <div *ngIf="(text.errors&&(submit||text.touched||text.dirty))">
+    <div [hidden]="!text.errors.minlength" class="error" >לא ניתן להוסיף משימה שאורך הטקסט בה קטן מ - 3</div>
+    <div [hidden]="!text.errors.required" class="error" >לא ניתן להוסיף משימה שאורך הטקסט בה קטן מ - 3</div>
+</div> 
+  <div *ngIf="errmore5" class="error" >לא ניתן להוסיף יותר מ - 5 משימות</div>
+  <div *ngIf="errtwice" class="error" >לא ניתן להוסיף אותה משימה פעמים</div>
+</form>
+<p>רשימת משימות</p>
+<table id="table" *ngIf="list" >
+  <tr id="tr" *ngFor="let item of list; let index=index" >
+     <td>{{item}}</td> 
+     <td (click)="delete(index)">{{index + 1}}</td> 
+      
+ 
+  </tr>
+</table></div></div>
