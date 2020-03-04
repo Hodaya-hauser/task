@@ -20,10 +20,11 @@ ngOnInit()
   submitupdate:boolean=false;
   index:number;
   flagupdate:boolean=false;
-  constructor() {
-  }
-add(form)
-{
+ constructor() 
+ {
+ }
+ add(form)
+ {
   this.submitadd=true;
   this.errmore5=false;
   this.errtwice=false;
@@ -40,26 +41,29 @@ add(form)
     this.list.push(this.task)
   }
  }
- clearadd(){
-   this.submitadd=false
-  // this.errmore5=false;
-  // this.errtwice=false;
+ clearadd()
+ {
+   this.submitadd=false;
  }
- clearupdate(){
-this.submitupdate=false;
+ clearupdate()
+ {
+  this.submitupdate=false;
  }
  delete(index)
  {
    this.list.splice(index,1);
  }
  update(index)
- { this.submitadd=false
+ { 
+   this.submitadd=false
    this.submitupdate=false;
    this.updatetask=this.list[index];
    this.index=index;
    this.flagupdate=true;
  }
- saveupdate(formupdate){
+ saveupdate(formupdate)
+ {
+   this.submitadd=false;
   this.submitupdate=true;
   this.errmore5=false;
   this.errtwice=false;
@@ -73,7 +77,8 @@ this.submitupdate=false;
     this.flagupdate=false;
   }
  }
- cancel(){
+ cancel()
+ {
    this.flagupdate=false;
  }
 }
