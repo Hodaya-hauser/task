@@ -7,9 +7,9 @@ import { Component, ViewChild} from '@angular/core';
 })
 export class AppComponent {
 
-  ngOnInit() 
-  {
-  }
+ngOnInit() 
+{
+}
   public title = 'example';
   list:string[]=[];
   task:string="";
@@ -40,16 +40,20 @@ add(form)
     this.list.push(this.task)
   }
  }
- clear(){
-  this.errmore5=false;
-  this.errtwice=false;
+ clearadd(){
+   this.submitadd=false
+  // this.errmore5=false;
+  // this.errtwice=false;
+ }
+ clearupdate(){
+this.submitupdate=false;
  }
  delete(index)
  {
    this.list.splice(index,1);
  }
  update(index)
- {
+ { this.submitadd=false
    this.submitupdate=false;
    this.updatetask=this.list[index];
    this.index=index;

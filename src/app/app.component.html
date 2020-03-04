@@ -3,19 +3,21 @@
 <div id="header" >ניהול משימות</div>
 <div id="context">
 <form name="form" (ngSubmit)="add(form)" #form="ngForm">
-<input type="text" name="text" id="text" [(ngModel)]="task" #text="ngModel" minlength="3"required (click)="clear()">
+<input type="text" name="text" id="text" [(ngModel)]="task" #text="ngModel" minlength="3"required (click)="clearadd()">
     <input type="submit" value="הוספה">
   <div *ngIf="(text.errors&&(submitadd||text.touched||text.dirty))">
     <div [hidden]="!text.errors.minlength" class="error" >לא ניתן להוסיף משימה שאורך הטקסט בה קטן מ - 3</div>
     <div [hidden]="!text.errors.required" class="error" >לא ניתן להוסיף משימה שאורך הטקסט בה קטן מ - 3</div>
 </div> 
+<div *ngIf="submitadd">
   <div *ngIf="errmore5" class="error" >לא ניתן להוסיף יותר מ - 5 משימות</div>
   <div *ngIf="errtwice" class="error" >לא ניתן להוסיף אותה משימה פעמים</div>
+</div>
 </form>
 <div *ngIf="flagupdate">
 <p>עריכת משימה</p>
 <form name="formupdate" (ngSubmit)="saveupdate(formupdate)" #formupdate="ngForm">
-  <input type="text" name="textupdate" id="textupdate" [(ngModel)]="updatetask" #textupdate="ngModel" minlength="3"required (click)="clear()">
+  <input type="text" name="textupdate" id="textupdate" [(ngModel)]="updatetask" #textupdate="ngModel" minlength="3"required (click)="clearupdate()">
       <input type="submit" value="עדכון">
       <input type="button" value="ביטול" (click)="cancel()">
     <div *ngIf="(textupdate.errors&&(submitupdate||text.touched||text.dirty))">
