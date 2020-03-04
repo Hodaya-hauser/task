@@ -2,31 +2,31 @@
 <div id="all" >
 <div id="header" >ניהול משימות</div>
 <div id="context">
-<form name="form" (ngSubmit)="add(form)" #form="ngForm">
-<input type="text" name="text" id="text" [(ngModel)]="task" #text="ngModel" minlength="3"required (keyup)="clearadd()">
+<form name="form" (ngSubmit)="add(formAdd)" #formAdd="ngForm">
+<input type="text" name="text" id="text" [(ngModel)]="task" #text="ngModel" minlength="3"required (keyup)="clearAdd()">
     <input type="submit" value="הוספה">
-  <div *ngIf="(text.errors&&(submitadd||text.touched||text.dirty))">
+  <div *ngIf="(text.errors&&(submitAdd||text.touched||text.dirty))">
     <div [hidden]="!text.errors.minlength" class="error" >לא ניתן להוסיף משימה שאורך הטקסט בה קטן מ - 3</div>
     <div [hidden]="!text.errors.required" class="error" >לא ניתן להוסיף משימה שאורך הטקסט בה קטן מ - 3</div>
 </div> 
-<div *ngIf="submitadd">
-  <div *ngIf="errmore5" class="error" >לא ניתן להוסיף יותר מ - 5 משימות</div>
-  <div *ngIf="errtwice" class="error" >לא ניתן להוסיף אותה משימה פעמים</div>
+<div *ngIf="submitAdd">
+  <div *ngIf="errMore5" class="error" >לא ניתן להוסיף יותר מ - 5 משימות</div>
+  <div *ngIf="errTwice" class="error" >לא ניתן להוסיף אותה משימה פעמים</div>
 </div>
 </form>
-<div *ngIf="flagupdate">
+<div *ngIf="flagUpdate">
 <p>עריכת משימה</p>
-<form name="formupdate" (ngSubmit)="saveupdate(formupdate)" #formupdate="ngForm">
-  <input type="text" name="textupdate" id="textupdate" [(ngModel)]="updatetask" #textupdate="ngModel" minlength="3"required (keyup)="clearupdate()">
+<form name="formupdate" (ngSubmit)="saveUpdate(formUpdate)" #formUpdate="ngForm">
+  <input type="text" name="textUpdate" id="textUpdate" [(ngModel)]="updateTask" #textUpdate="ngModel" minlength="3"required (keyup)="clearUpdate()">
       <input type="submit" value="עדכון">
       <input type="button" value="ביטול" (click)="cancel()">
-    <div *ngIf="(textupdate.errors&&(submitupdate||text.touched||text.dirty))">
-      <div [hidden]="!textupdate.errors.minlength" class="error" >לא ניתן להוסיף משימה שאורך הטקסט בה קטן מ - 3</div>
-      <div [hidden]="!textupdate.errors.required" class="error" >לא ניתן להוסיף משימה שאורך הטקסט בה קטן מ - 3</div>
+    <div *ngIf="(textUpdate.errors&&(submitUpdate||textUpdate.touched||textUpdate.dirty))">
+      <div [hidden]="!textUpdate.errors.minlength" class="error" >לא ניתן להוסיף משימה שאורך הטקסט בה קטן מ - 3</div>
+      <div [hidden]="!textUpdate.errors.required" class="error" >לא ניתן להוסיף משימה שאורך הטקסט בה קטן מ - 3</div>
   </div> 
-  <div *ngIf="submitupdate">
-    <div *ngIf="errmore5" class="error" >לא ניתן להוסיף יותר מ - 5 משימות</div>
-    <div *ngIf="errtwice" class="error" >לא ניתן להוסיף אותה משימה פעמים</div>
+  <div *ngIf="submitUpdate">
+    <div *ngIf="errMore5" class="error" >לא ניתן להוסיף יותר מ - 5 משימות</div>
+    <div *ngIf="errTwice" class="error" >לא ניתן להוסיף אותה משימה פעמים</div>
   </div>
   </form>
 </div>

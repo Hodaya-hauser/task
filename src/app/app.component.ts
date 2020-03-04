@@ -9,77 +9,97 @@ export class AppComponent {
 
 ngOnInit() 
 {
+  this.list=JSON.parse(localStorage.getItem("list"))
 }
   public title = 'example';
-  list:string[]=[];
   task:string="";
-  updatetask:string="";
-  errmore5:boolean=false;
-  errtwice:boolean=false;
-  submitadd:boolean=false;
-  submitupdate:boolean=false;
+  updateTask:string="";
+  errMore5:boolean=false;
+  errTwice:boolean=false;
+  submitAdd:boolean=false;
+  submitUpdate:boolean=false;
   index:number;
-  flagupdate:boolean=false;
+  flagUpdate:boolean=false;
+  list:string[]=[];
  constructor() 
  {
  }
- add(form)
+ add(formAdd)
  {
-  this.submitadd=true;
-  this.errmore5=false;
-  this.errtwice=false;
-  if(this.list.length==5)
+  this.submitAdd=true;
+  this.errMore5=false;
+  this.errTwice=false;
+ 
+  if(formAdd.valid&&this.list&&this.list.length==5)
   {
-    this.errmore5=true;
+    this.errMore5=true;
   }
-  if(this.list.find(x=>x==this.task))
+  else
   {
-    this.errtwice=true;
+    if(this.list&&this.list.find(x=>x==this.task))
+    {
+      this.errTwice=true;
+    }
   }
-  if(!this.errtwice&&!this.errmore5&&form.valid)
+  
+  if(!this.errTwice&&!this.errMore5&&formAdd.valid)
   {
-    this.list.push(this.task)
+    if(this.list)
+    {
+      this.list.push(this.task);
+    }
+    else
+    {
+      this.list=[];
+      this.list[0]=this.task;
+    }
+    localStorage.setItem("list",JSON.stringify(this.list))
   }
  }
- clearadd()
+ clearAdd()
  {
-   this.submitadd=false;
+   this.submitAdd=false;
  }
- clearupdate()
+ clearUpdate()
  {
-  this.submitupdate=false;
+  this.submitUpdate=false;
  }
  delete(index)
  {
    this.list.splice(index,1);
+   localStorage.setItem("list",JSON.stringify(this.list))
  }
  update(index)
  { 
-   this.submitadd=false
-   this.submitupdate=false;
-   this.updatetask=this.list[index];
+   this.submitAdd=false;
+   this.submitUpdate=false;
+   this.updateTask=this.list[index];
    this.index=index;
-   this.flagupdate=true;
+   this.flagUpdate=true;
  }
- saveupdate(formupdate)
+ saveUpdate(formUpdate)
  {
-   this.submitadd=false;
-  this.submitupdate=true;
-  this.errmore5=false;
-  this.errtwice=false;
-  if(this.list.find(x=>x==this.updatetask)&&this.list[this.index]!=this.updatetask)
+   this.submitAdd=false;
+   this.submitUpdate=true;
+   this.errMore5=false;
+   this.errTwice=false;
+   if(formUpdate.valid)
   {
-    this.errtwice=true;
-  }
-  if(!this.errtwice&&formupdate.valid)
-  {
-    this.list[this.index]=this.updatetask;
-    this.flagupdate=false;
-  }
+    if(this.list&&this.list.find(x=>x==this.updateTask)&&this.list[this.index]!=this.updateTask)
+    {
+      this.errTwice=true;
+    }
+    else
+    {
+      this.list[this.index]=this.updateTask;
+      localStorage.setItem("list",JSON.stringify(this.list))
+      this.flagUpdate=false;
+    }
+}
  }
  cancel()
  {
-   this.flagupdate=false;
+   this.flagUpdate=false;
  }
 }
 
