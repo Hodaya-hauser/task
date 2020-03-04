@@ -13,14 +13,18 @@ export class AppComponent {
   public title = 'example';
   list:string[]=[];
   task:string="";
+  updatetask:string="";
   errmore5:boolean=false;
   errtwice:boolean=false;
-  submit:boolean=false;
+  submitadd:boolean=false;
+  submitupdate:boolean=false;
+  index:number;
+  flagupdate:boolean=false;
   constructor() {
   }
 add(form)
 {
-  this.submit=true;
+  this.submitadd=true;
   this.errmore5=false;
   this.errtwice=false;
   if(this.list.length==5)
@@ -43,6 +47,30 @@ add(form)
  delete(index)
  {
    this.list.splice(index,1);
+ }
+ update(index)
+ {
+   this.submitupdate=false;
+   this.updatetask=this.list[index];
+   this.index=index;
+   this.flagupdate=true;
+ }
+ saveupdate(formupdate){
+  this.submitupdate=true;
+  this.errmore5=false;
+  this.errtwice=false;
+  if(this.list.find(x=>x==this.updatetask)&&this.list[this.index]!=this.updatetask)
+  {
+    this.errtwice=true;
+  }
+  if(!this.errtwice&&formupdate.valid)
+  {
+    this.list[this.index]=this.updatetask;
+    this.flagupdate=false;
+  }
+ }
+ cancel(){
+   this.flagupdate=false;
  }
 }
 

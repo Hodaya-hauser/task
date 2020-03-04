@@ -31,8 +31,6 @@
     "ngx-image-zoom": "^0.4.1",
     "ngx-img-zoom": "^4.1.2",
     "ngx-print": "^1.2.0-beta.3",
-    "primeicons": "^2.0.0",
-    "primeng": "^8.1.1",
     "rxjs": "~6.3.3",
     "save": "^2.4.0",
     "tslib": "^1.9.0",
