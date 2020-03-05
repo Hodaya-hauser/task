@@ -6,8 +6,7 @@
 <input type="text" name="text" id="text" [(ngModel)]="task" #text="ngModel" minlength="3"required (keyup)="clearAdd()">
     <input type="submit" value="הוספה">
   <div *ngIf="(text.errors&&(submitAdd||text.touched||text.dirty))">
-    <div [hidden]="!text.errors.minlength" class="error" >לא ניתן להוסיף משימה שאורך הטקסט בה קטן מ - 3</div>
-    <div [hidden]="!text.errors.required" class="error" >לא ניתן להוסיף משימה שאורך הטקסט בה קטן מ - 3</div>
+     <div [hidden]="!text.invalid" class="error" >לא ניתן להוסיף משימה שאורך הטקסט בה קטן מ - 3</div>
 </div> 
 <div *ngIf="submitAdd">
   <div *ngIf="errMore5" class="error" >לא ניתן להוסיף יותר מ - 5 משימות</div>
@@ -21,8 +20,7 @@
       <input type="submit" value="עדכון">
       <input type="button" value="ביטול" (click)="cancel()">
     <div *ngIf="(textUpdate.errors&&(submitUpdate||textUpdate.touched||textUpdate.dirty))">
-      <div [hidden]="!textUpdate.errors.minlength" class="error" >לא ניתן להוסיף משימה שאורך הטקסט בה קטן מ - 3</div>
-      <div [hidden]="!textUpdate.errors.required" class="error" >לא ניתן להוסיף משימה שאורך הטקסט בה קטן מ - 3</div>
+      <div [hidden]="!textUpdate.invalid" class="error" >לא ניתן להוסיף משימה שאורך הטקסט בה קטן מ - 3</div>
   </div> 
   <div *ngIf="submitUpdate">
     <div *ngIf="errMore5" class="error" >לא ניתן להוסיף יותר מ - 5 משימות</div>
